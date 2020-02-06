@@ -5,7 +5,12 @@
 The GLUES Benchmark aims to collect different sources of tasks for evaluating Spanish Language Models in a unified fashion in order to develop and allow the growth of the Spanish NLP Community.
 
 
-
+# Table of Contents
+1. [Tasks](#tasks)
+2. [Statistics](#statistics)
+3. [Baselines](#baselines)
+4. [Optional](#optional)
+5. [References](#references)
 
 # Tasks
 WIP, missing task/dataset description
