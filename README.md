@@ -70,7 +70,7 @@ This might not interest everyone but it has a special place in our hearts
 3. [Introduction to the CoNLL-2002 Shared Task: Language-Independent Named Entity Recognition](https://www.aclweb.org/anthology/W02-2024/ )
 4. [Universal Dependencies v1.4](https://lindat.mff.cuni.cz/repository/xmlui/handle/11234/1-1827)
 5. [Cross-Lingual Transfer Learning for POS Tagging without Cross-Lingual Resources](https://www.aclweb.org/anthology/D17-1302/)
-6. [Universal Dependencies v1.4](https://lindat.mff.cuni.cz/repository/xmlui/handle/11234/1-2837)
+6. [Universal Dependencies v2.2](https://lindat.mff.cuni.cz/repository/xmlui/handle/11234/1-2837)
 7. [CoNLL 2017 Shared Task](http://universaldependencies.org/conll17/)
 8. [MLDoc: A Corpus for Multilingual Document Classification in Eight Languages](https://github.com/facebookresearch/MLDoc)
 9. [200K+ Crowdsourced Political Arguments for a New Chilean Constitution](https://www.aclweb.org/anthology/W17-5101/)
