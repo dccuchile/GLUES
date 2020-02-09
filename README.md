@@ -22,7 +22,7 @@ Part of the motivation for this work was comparing a spanish-only model to the p
 ### Natural Language Inference
 **XNLI** 
 
-The Cross-Lingual NLI Corpus [\[1\]][1] is a evaluation dataset that extends the MNLI [\[2\]][2] dataset by adding dev and test set for 15 languages. Given a premise sentence and a hypothesis sentences, the task is to predict whether the premise entails the hypothesis (entailment), contradicts the hypothesis (contradiction), or neither (neutral). 
+The Cross-Lingual NLI Corpus [\[2\]][2] is a evaluation dataset that extends the MNLI [\[3\]][3] dataset by adding dev and test set for 15 languages. Given a premise sentence and a hypothesis sentences, the task is to predict whether the premise entails the hypothesis (entailment), contradicts the hypothesis (contradiction), or neither (neutral). 
 
 In this setup we train using the Spanish portion of the MNLI dataset, and use the dev and test set from the XNLI corpus. This task is evaluated by simple accuracy.
 
@@ -31,7 +31,7 @@ In this setup we train using the Spanish portion of the MNLI dataset, and use th
 
 **PAWS-X**
 
-The PAWS-X[\[3\]][3] is the multilingual version of the PAWS dataset [\[4\]][4]. The task consists in determining if two sentences are semantically equivalent or not.
+The PAWS-X[\[4\]][4] is the multilingual version of the PAWS dataset [\[5\]][5]. The task consists in determining if two sentences are semantically equivalent or not.
 
 The dataset provides standard (translate) train, dev and test set. It is evaluated using simple accuracy.
 
@@ -56,7 +56,7 @@ Del		B-PER
 Bosque		I-PER
 ```
 
-The dataset[\[5\]][5] is presented a one word per line followed with its respective entity tag. An empty line represents the end of a sentence. This dataset provides standar train, dev and test sets and the performance in this task is measured with F1 rate. For this task, precision is the percentage of named entities found that are correct and recall is the percentage of named entities present in the corpus that are found.  
+The dataset[\[6\]][6] is presented as one word per line followed with its respective entity tag. An empty line represents the end of a sentence. This dataset provides standar train, dev and test sets and the performance in this task is measured with F1 rate. For this task, precision is the percentage of named entities found that are correct and recall is the percentage of named entities present in the corpus that are found.  
 
 
 ### Part-of-Speech Tagging (_missing confirmation for dataset selection_)
@@ -67,7 +67,7 @@ The dataset[\[5\]][5] is presented a one word per line followed with its respect
 
 Part-of-speech tagging (POS tagging) is the task of tagging a word in a text with its part of speech. A part of speech is a category of words with similar grammatical properties. Common Spanish parts of speech are noun, verb, adjective, adverb, pronoun, preposition, conjunction, etc.
 
-For this task we use the spanish subset of the Universal Dependencies (v1.4) Treebank [\[6\]][6]. Since there are two spanish subsets to this dataset, we form the final dataset by concatenating btoh. The version of the dataset was chosen following the works of Shijie Wu et al. [\[1\]][1] and  Kim et al. [\[7\]][7].
+For this task we use the spanish subset of the Universal Dependencies (v1.4) Treebank [\[7\]][7]. Since there are two spanish subsets to this dataset, we form the final dataset by concatenating btoh. The version of the dataset was chosen following the works of Shijie Wu et al. [\[1\]][1] and  Kim et al. [\[8\]][8].
 
 The dataset provides standard train, dev and test sets. This task is evaluated by the accuracy of predicted POS tags.
 
@@ -80,7 +80,7 @@ The dataset provides standard train, dev and test sets. This task is evaluated b
 
 The task of dependency parsing consists in assigning a dependecy tree to a given sentence. A dependency tree represents the grammatical structure of a sentence and defines the relationship between "head" words an "dependent" words which are associated to those heads. The relationship between the two words is expressed with an edge of the dependency tree and the type of relationship is represented by the label of said edge.
 
-For this task we use a subset of the Universal Dependencies v2.2 Treebank [\[8\]][8]. The spanish portion of this dataset consists of three subsets, `Spanish_AnCora`, `Spanish_GSD` and `Spanish_PUD`. We use the concatenation of the `AnCora` and `GSD` portions of the dataset. This desition and the version choice was done following the work from Ahmad et al. [\[9\]][9]
+For this task we use a subset of the Universal Dependencies v2.2 Treebank [\[9\]][9]. The spanish portion of this dataset consists of three subsets, `Spanish_AnCora`, `Spanish_GSD` and `Spanish_PUD`. We use the concatenation of the `AnCora` and `GSD` portions of the dataset. This desition and the version choice was done following the work from Ahmad et al. [\[10\]][10]
 
 This task is evaluated using the metrics UAS and LAS, which stand for Unlabeled Attachment Score and Labeled Attachment Score, respectively. UAS is the percentage of words that have been assigned the correct head, whereas LAS is the percentage of words that have been assigned both the correct head and the correct label for the relationship.
 
@@ -90,7 +90,7 @@ This task is evaluated using the metrics UAS and LAS, which stand for Unlabeled 
  -->
 **MLDoc**
 
-The MLDoc [\[10\]][10] dataset is a balanced subset of the Reuters corpus [\[11\]][11]. This task consists in classifying the docuements into four categories, CCAT (Corporate/Industrial), ECAT (Economics), GCAT (Government/Social), and MCAT (Markets).
+The MLDoc [\[11\]][11] dataset is a balanced subset of the Reuters corpus [\[12\]][12]. This task consists in classifying the docuements into four categories, CCAT (Corporate/Industrial), ECAT (Economics), GCAT (Government/Social), and MCAT (Markets).
 
 This dataset provides multiple sizes for the train split (1k, 2k, 5k and 10k), plus standard dev and test sets. We chose to train using the largest available test split. This task is evaluated using simple accuracy.
 
@@ -119,55 +119,50 @@ This might not interest everyone but it has a special place in our hearts
 
 ### Document Classification
 💕💕💕
-* ArgumentMining2017 (multiple tasks) [\[9\]][9]
+* ArgumentMining2017 (multiple tasks) [\[13\]][13]
 * top-5 accuracy, macro-averaged precision, recall and f1 (multiple tasks)
 
 
 # References
+<!-- I used this weird way of adding hyperlinks to be able to link to same url from different places -->
 <!-- General -->
 1. [Beto, Bentz, Becas: The Surprising Cross-Lingual Effectiveness of BERT][1]
-[1]: https://arxiv.org/abs/1904.09077
 
 <!-- Tasks -->
-1. [XNLI: Evaluating Cross-lingual Sentence Representations][1]
-2. [A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference][2]
-3. [PAWS-X: A Cross-lingual Adversarial Dataset for Paraphrase Identification][3]
-4. [PAWS: Paraphrase Adversaries from Word Scrambling][4]
-3. [Introduction to the CoNLL-2002 Shared Task: Language-Independent Named Entity Recognition][5]
-6. [Universal Dependencies v1.4][6]
-5. [Cross-Lingual Transfer Learning for POS Tagging without Cross-Lingual Resources][5]
-6. [Universal Dependencies v2.2][8]
-6. [On Difficulties of Cross-Lingual Transfer with Order Differences: A Case Study on Dependency Parsing][9]
+2. [XNLI: Evaluating Cross-lingual Sentence Representations][2]
+3. [A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference][3]
+4. [PAWS-X: A Cross-lingual Adversarial Dataset for Paraphrase Identification][4]
+5. [PAWS: Paraphrase Adversaries from Word Scrambling][5]
+6. [Introduction to the CoNLL-2002 Shared Task: Language-Independent Named Entity Recognition][6]
+7. [Universal Dependencies v1.4][7]
+8. [Cross-Lingual Transfer Learning for POS Tagging without Cross-Lingual Resources][8]
+9. [Universal Dependencies v2.2][9]
+10. [On Difficulties of Cross-Lingual Transfer with Order Differences: A Case Study on Dependency Parsing][10]
+11. [A Corpus for Multilingual Document Classification in Eight Languages][11]
+12. [Reuters Corpora (RCV1, RCV2, TRC2)][12]
 
-7. [Cross-Lingual Transfer Learning for POS Tagging without Cross-Lingual Resources][7]
-
-10. [A Corpus for Multilingual Document Classification in Eight Languages][10]
-11. [Reuters Corpora (RCV1, RCV2, TRC2)][11]
-
-
-7. [CoNLL 2017 Shared Task][7]
-9. [200K+ Crowdsourced Political Arguments for a New Chilean Constitution][9]
+<!-- Optional -->
+13. [200K+ Crowdsourced Political Arguments for a New Chilean Constitution][13]
 
 
+[1]: https://arxiv.org/abs/1904.09077
+[2]: https://arxiv.org/abs/1809.05053
+[3]: https://www.nyu.edu/projects/bowman/multinli/paper.pdf
+[4]: https://arxiv.org/abs/1908.11828
+[5]: https://arxiv.org/abs/1904.01130
+[6]: https://www.aclweb.org/anthology/W02-2024/
+[7]: https://lindat.mff.cuni.cz/repository/xmlui/handle/11234/1-1827
+[8]: https://www.aclweb.org/anthology/D17-1302/
+[9]: https://lindat.mff.cuni.cz/repository/xmlui/handle/11234/1-2837
+[10]: https://arxiv.org/abs/1811.00570
+[11]: http://www.lrec-conf.org/proceedings/lrec2018/pdf/658.pdf
+[12]: https://trec.nist.gov/data/reuters/reuters.html
+[13]: https://www.aclweb.org/anthology/W17-5101/
 
-[1]: https://arxiv.org/abs/1809.05053
-[2]: https://www.nyu.edu/projects/bowman/multinli/paper.pdf
-
-[3]: https://arxiv.org/abs/1908.11828
-[4]: https://arxiv.org/abs/1904.01130
-
-[5]: https://www.aclweb.org/anthology/W02-2024/
-
-[6]: https://lindat.mff.cuni.cz/repository/xmlui/handle/11234/1-1827
-[7]: https://www.aclweb.org/anthology/D17-1302/
 
 
-[8]: https://lindat.mff.cuni.cz/repository/xmlui/handle/11234/1-2837
-[9]: https://arxiv.org/abs/1811.00570
 
-[7]: http://universaldependencies.org/conll17/
-[8]: https://github.com/facebookresearch/MLDoc
-[9]: https://www.aclweb.org/anthology/W17-5101/
 
-[10]: http://www.lrec-conf.org/proceedings/lrec2018/pdf/658.pdf
-[11]: https://trec.nist.gov/data/reuters/reuters.html
+
+
+
