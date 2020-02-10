@@ -9,8 +9,8 @@ The GLUES Benchmark aims to collect different sources of tasks for evaluating Sp
 1. [Tasks](#tasks)
 2. [Statistics](#statistics)
 3. [Baselines](#baselines)
-4. [Optional](#optional)
-5. [References](#references)
+<!-- 4. [Optional](#optional) -->
+4. [References](#references)
 
 
 # Tasks
@@ -99,21 +99,55 @@ This dataset provides multiple sizes for the train split (1k, 2k, 5k and 10k), p
 
 The following table shows the number of examples in each split of each dataset, the type of the task and the metrics used to evaluate the task.
 
-| Corpus     | \|Train\|       | \|Dev\|       | \|Test\|    | Task           | Metrics  |
-|------------|-----------------|---------------|-------------|----------------|----------|
-| XNLI       | 392,703         | 2,490         | 5,010       | NLI            | acc      |
-| PAWS-X     | 49,401          | 1,962         | 1,999       | paraphrase     | acc      |
-| CoNLL-2002 | 273,037         | 54,837        | 53,049      | NER            | f1 score |
-| UDv1.4     | 14,187 + 14,305 | 1,552 + 1,654 | 274 + 1,721 | POS            | acc      |
-| UDv2.2     | 14,187 + 14,305 | 1,400 + 1,654 | 426 + 1,721 | parsing        | UAS, LAS |
-| MLDoc      | 10,000          | 1,000         | 4,000       | classification | acc      |
+For each task the meaning of an "example" are different. For XNLI, PAWS-X and Dependency Parsing an example is a sentence that needs to be processed whereas in POS Tagging and NER Tagging, each word is an example that needs to be classified. Finally, examples in the task of Document Classification are whole documents. The metrics reported correspond to each task's example definition.
 
+<!-- Original rows of the table -->
+<!-- | UDv1.4     | 389,703 + 463,275 | 41,975 + 54,665 | 8,128 + 54,755 | POS            | acc      | -->
+<!-- | UDv2.2     | 14,187 + 14,305 | 1,400 + 1,654 | 426 + 1,721 | parsing        | UAS, LAS | -->
+
+
+| Corpus                            | \|Train\| | \|Dev\| | \|Test\| | Task           | Metrics  |
+|-----------------------------------|-----------|---------|----------|----------------|----------|
+| XNLI                              | 392,703   | 2,490   | 5,010    | NLI            | acc      |
+| PAWS-X                            | 49,401    | 1,962   | 1,999    | paraphrase     | acc      |
+| CoNLL-2002                        | 273,037   | 54,837  | 53,049   | NER            | f1 score |
+| UDv1.4                            | 852,978   | 96,640  | 62,883   | POS            | acc      |
+| UDv2.2 <sup>[1](#footnote1)</sup> | 28,492    | 3,054   | 2,147    | parsing        | UAS, LAS |
+| MLDoc                             | 10,000    | 1,000   | 4,000    | classification | acc      |
+
+<a name="footnote1">1</a>: This dataset was obtained by concatenating the two larges spanish subsets.
 
 # Baselines
-WIP, current state of the art (??)
+In this section we present a series of baseline results for each task. Considering some of the tasks have a long running history in the field, the original baselines have long been surpassed by modern architectures and methods. Nonetheless, we think it is important to cite the original baselines for completeness.
 
+Given that our main goal is to motivate and standardize the growth of spanish models from now on, we also sumarize the current state of the art for each task, so that future efforts have a current baseline to compare to.
 
-# Optional
+### Original Baselines
+
+| Corpus     | Task           | Performance                                   |
+|------------|----------------|-----------------------------------------------|
+| XNLI       | NLI            | 68.8 [\[2\]][2]                               |
+| PAWS-X     | paraphrase     | 89.3 [\[4\]][4]                               |
+| CoNLL-2002 | NER            | 35.86 [\[6\]][6]                              |
+| UDv1.4     | POS            | - <sup>[2](#footnote2)</sup>                  |
+| UDv2.2     | parsing        | 90.10/87.55 <sup>[3](#footnote3)</sup> [\[13\]][13] |
+| MLDoc      | classification | 94.45 [\[11\]][11]                            |
+
+<a name="footnote2">2</a>: This is a standard task for which we didn't find an original baseline.<br>
+<a name="footnote3">3</a>: Measured only on the AnCora portion of the dataset.
+
+### Current state of the art
+
+| Corpus     | Task           | Performance          |
+|------------|----------------|----------------------|
+| XNLI       | NLI            | 80.80 [\[14\]][14]   |
+| PAWS-X     | paraphrase     | 89.0 [\[4\]][4]      |
+| CoNLL-2002 | NER            | 88.81 [\[15\]][15]   |
+| UDv1.4     | POS            | 98.91 [\[16\]][16]   |
+| UDv2.2     | parsing        | 92.3/86.5 [\[1\]][1] |
+| MLDoc      | classification | 94.45 [\[11\]][11]   |
+
+<!-- # Optional
 (_opinions on this????_)
 This might not interest everyone but it has a special place in our hearts
 
@@ -121,14 +155,11 @@ This might not interest everyone but it has a special place in our hearts
 💕💕💕
 * ArgumentMining2017 (multiple tasks) [\[13\]][13]
 * top-5 accuracy, macro-averaged precision, recall and f1 (multiple tasks)
-
+ -->
 
 # References
 <!-- I used this weird way of adding hyperlinks to be able to link to same url from different places -->
-<!-- General -->
 1. [Beto, Bentz, Becas: The Surprising Cross-Lingual Effectiveness of BERT][1]
-
-<!-- Tasks -->
 2. [XNLI: Evaluating Cross-lingual Sentence Representations][2]
 3. [A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference][3]
 4. [PAWS-X: A Cross-lingual Adversarial Dataset for Paraphrase Identification][4]
@@ -140,9 +171,12 @@ This might not interest everyone but it has a special place in our hearts
 10. [On Difficulties of Cross-Lingual Transfer with Order Differences: A Case Study on Dependency Parsing][10]
 11. [A Corpus for Multilingual Document Classification in Eight Languages][11]
 12. [Reuters Corpora (RCV1, RCV2, TRC2)][12]
-
+13. [CoNLL 2017 Shared Task][13]
+14. [Cross-lingual Language Model Pretraining][14]
+15. [Neural Architectures for Nested NER through Linearization][15]
+16. [75 Languages, 1 Model: Parsing Universal Dependencies Universally][16]
 <!-- Optional -->
-13. [200K+ Crowdsourced Political Arguments for a New Chilean Constitution][13]
+<!-- 13. [200K+ Crowdsourced Political Arguments for a New Chilean Constitution][13] -->
 
 
 [1]: https://arxiv.org/abs/1904.09077
@@ -157,12 +191,9 @@ This might not interest everyone but it has a special place in our hearts
 [10]: https://arxiv.org/abs/1811.00570
 [11]: http://www.lrec-conf.org/proceedings/lrec2018/pdf/658.pdf
 [12]: https://trec.nist.gov/data/reuters/reuters.html
-[13]: https://www.aclweb.org/anthology/W17-5101/
+<!-- [13]: https://www.aclweb.org/anthology/W17-5101/ -->
+[13]: http://universaldependencies.org/conll17/baseline.html
 
-
-
-
-
-
-
-
+[14]: https://arxiv.org/abs/1901.07291
+[15]: https://arxiv.org/abs/1908.06926
+[16]: https://arxiv.org/abs/1904.02099
